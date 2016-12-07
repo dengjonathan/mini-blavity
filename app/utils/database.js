@@ -28,7 +28,7 @@ db.knex.schema.hasTable('pods')
     if (!exists) {
       db.knex.schema.createTable('pods', pod => {
         pod.string('sku', 100).primary();
-        pod.string('type', 255); // small, medium, large (should I just store what machine it works in?)
+        pod.string('type', 255);
         pod.string('flavor', 255);
         pod.integer('size'); // 12, 24, 36
         pod.timestamps();

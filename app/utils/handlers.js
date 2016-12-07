@@ -1,4 +1,9 @@
-exports.getAllMachines = (req, res) => {};
+const machines = require('../collections/machines');
+const pods = require('../collections/pods');
+
+exports.getAllMachines = (req, res) => {
+  machines.fetch().then(data => res.send(data));
+};
 
 exports.getOneMachine = (req, res) => {};
 
