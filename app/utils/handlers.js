@@ -10,15 +10,24 @@ exports.getOneMachine = (req, res) => {
     .then(machine => {
       // fetch cross-sells
       if (!machine) {
-        return res.send('that query not found');
+        return res.json('that query not found');
       }
-      return res.send(machine);
+      return res.json(machine);
     });
 };
 
 exports.getAllPods = (req, res) => pods.fetch()
-  .then(data => res.send(data));
+  .then(data => res.json(data));
 
-exports.getOnePod = (req, res) => {};
+exports.getOnePod = (req, res) => {
+  pods.query({where: {sku: req.params.id}})
+  .fetchOne()
+  .then(pod => {
+    // fetch cross-sells
+    if (!pod) {
+      return res.json('that query not found');
+    }
+    return res.json(pod);
+  });
+};
 
-exports.getCrossSell = (req, res) => {};
