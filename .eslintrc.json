@@ -106,7 +106,6 @@
     "handle-callback-err": 1,
     "no-new-require": 2,
 
-    "array-bracket-spacing": [2, "always"],
     "block-spacing": [2, "always"],
     "brace-style": [2, "1tbs", {
       "allowSingleLine": false
@@ -151,11 +150,9 @@
     "no-unneeded-ternary": 2,
     "object-curly-spacing": [2, "always"],
     "operator-linebreak": [2, "none"],
-    "quote-props": [1, "always"],
     "quotes": [2, "single", "avoid-escape"],
     "semi": [2, "always"],
     "space-before-blocks": [2, "always"],
-    "space-before-function-paren": [2, "never"],
     "space-infix-ops": 2,
     "space-unary-ops": [2, {
       "words": true,
