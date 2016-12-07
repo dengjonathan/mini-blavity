@@ -1,9 +1,5 @@
-const express = require('express');
+const app = require('express')();
 const bodyParser = require('body-parser');
-
-const handlers = require('./handlers');
-const app = express();
-const PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
 
@@ -23,6 +19,6 @@ app.get('/*', (req, res) => {
   res.sendStatus(404);
 });
 
-app.listen(PORT);
-console.log(`Coffee Server is listening on ${PORT}`);
+module.exports = app;
+
 
