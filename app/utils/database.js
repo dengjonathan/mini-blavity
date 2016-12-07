@@ -2,7 +2,7 @@ const path = require('path');
 const knex = require('knex')({
   'client': 'sqlite3',
   'connection': {
-    'filename': path.join(__dirname, './db/coffee.sqlite')
+    'filename': path.join(__dirname, '../../db/coffee.sqlite')
   },
   'useNullAsDefault': true
 });
@@ -16,7 +16,8 @@ db.knex.schema.hasTable('machines')
         machine.string('type', 255); // base, premium, deluxe
         machine.string('size', 100); // small, medium, large
         machine.timestamps();
-      });
+      })
+        .then(machines => console.log(machines));
     }
   });
 
@@ -29,7 +30,8 @@ db.knex.schema.hasTable('pods')
         pod.string('flavor', 255);
         pod.integer('size'); // 12, 24, 36
         pod.timestamps();
-      });
+      })
+        .then(machines => console.log(machines));
     }
   });
 
@@ -37,11 +39,12 @@ db.knex.schema.hasTable('xsells')
   .then(exists => {
     if (!exists) {
       db.knex.schema.createTable('urls', xsell => {
-        xsell.increment('id').primary();
+        xsell.increments('id').primary();
         xsell.integer('sku_machines');
         xsell.integer('sku_pods');
         xsell.timestamps();
-      });
+      })
+        .then(machines => console.log(machines));
     }
   });
 
