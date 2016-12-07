@@ -16,9 +16,10 @@ db.knex.schema.hasTable('machines')
         machine.string('sku', 100).primary();
         machine.string('type', 255); // base, premium, deluxe
         machine.string('size', 100); // small, medium, large
+        machine.boolean('compatible');
         machine.timestamps();
       })
-        .then(() => loadData.loadMachines());
+        .then(loadData.loadMachines);
     }
   });
 
@@ -32,14 +33,14 @@ db.knex.schema.hasTable('pods')
         pod.integer('size'); // 12, 24, 36
         pod.timestamps();
       })
-        .then(machines => console.log(machines));
+        .then(loadData.loadPods);
     }
   });
 
 db.knex.schema.hasTable('xsells')
   .then(exists => {
     if (!exists) {
-      db.knex.schema.createTable('urls', xsell => {
+      db.knex.schema.createTable('xsells', xsell => {
         xsell.increments('id').primary();
         xsell.integer('sku_machines');
         xsell.integer('sku_pods');
