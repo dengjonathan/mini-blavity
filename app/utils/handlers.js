@@ -1,16 +1,14 @@
 const machines = require('../collections/machines');
 const pods = require('../collections/pods');
 
-exports.getAllMachines = (req, res) => {
-  machines.fetch().then(data => res.send(data));
-};
+exports.getAllMachines = (req, res) => machines.fetch()
+  .then(data => res.send(data));
 
 exports.getOneMachine = (req, res) => {
-  console.log(req.params.id);
   machines.query({where: {sku: req.params.id}})
     .fetchOne()
     .then(machine => {
-      console.log(machine);
+      // fetch cross-sells
       if (!machine) {
         return res.send('that query not found');
       }
@@ -18,7 +16,8 @@ exports.getOneMachine = (req, res) => {
     });
 };
 
-exports.getAllPods = (req, res) => {};
+exports.getAllPods = (req, res) => pods.fetch()
+  .then(data => res.send(data));
 
 exports.getOnePod = (req, res) => {};
 
