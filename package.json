@@ -1,19 +1,29 @@
 {
-  "name": "SH_coding_challenge",
+  "name": "coffee_api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node app/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/body-parser": "0.0.33",
+    "@types/bluebird": "^3.0.36",
+    "@types/sqlite3": "^2.2.31",
+    "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "bookshelf": "^0.10.2",
     "express": "^4.14.0",
-    "knex": "^0.12.6"
+    "knex": "^0.12.6",
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.33",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
   }
 }

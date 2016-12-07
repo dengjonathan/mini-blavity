@@ -2,6 +2,8 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 const handlers = require('./handlers');
 
+const handlers = require('./handlers');
+
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('hell world!'));

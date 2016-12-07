@@ -1,4 +1,5 @@
 const path = require('path');
+const loadData = require('./loadData');
 const knex = require('knex')({
   'client': 'sqlite3',
   'connection': {
@@ -17,7 +18,7 @@ db.knex.schema.hasTable('machines')
         machine.string('size', 100); // small, medium, large
         machine.timestamps();
       })
-        .then(machines => console.log(machines));
+        .then(() => loadData.loadMachines());
     }
   });
 
