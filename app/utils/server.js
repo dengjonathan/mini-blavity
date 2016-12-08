@@ -4,17 +4,27 @@ const handlers = require('./handlers');
 
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => res.send('hell world!'));
+app.get('/', (req, res) => res.send('hello world!'));
 
-app.get('/products/machines', handlers.getAllMachines);
+// ENDPOINTS FOR MACHINES
+app.get('/machines', handlers.getAllMachines);
 
-app.get('/products/machines/:id', handlers.getOneMachine);
+app.get('/machines/:sku', handlers.getMachineBySku);
 
-app.get('/products/pods', handlers.getAllPods);
+app.get('/machines/type/:type', handlers.getMachineByType);
 
-app.get('/products/pods/:id', handlers.getOnePod);
+app.get('/machines/size/:size', handlers.getMachineBySize);
 
-app.get('/cross/:sku', handlers.getCrossSell);
+// ENDPOINTS FOR PODS
+app.get('/pods', handlers.getAllPods);
+
+app.get('/pods/:sku', handlers.getPodBySku);
+
+app.get('/pods/flavor/:flavor', handlers.getPodsByFlavor);
+
+app.get('/pods/size/:size', handlers.getPodsBySize);
+
+app.get('/pods/type/:type', handlers.getPodsByType);
 
 app.get('/*', (req, res) => {
   res.sendStatus(404);
