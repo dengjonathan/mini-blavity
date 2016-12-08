@@ -1,6 +1,15 @@
 const machines = require('../collections/machines');
 const pods = require('../collections/pods');
 
+const getSmallestSize = sorted => sorted.filter(
+  (each, _, all) => each.attributes.size === all[0].attributes.size
+);
+
+const getMachineXSell = (type, cb) => pods.query({where: {type}})
+  .orderBy('size')
+  .fetch()
+  .then(xsells => cb(getSmallestSize(xsells)));
+
 // MACHINES
 exports.getAllMachines = cb => machines.fetch().then(cb);
 
@@ -10,10 +19,10 @@ exports.getMachineBySku = (sku, cb) => machines.query({where: {sku}})
     if (!machine) {
       cb('that query was not found');
     }
-    cb({
-      machine,
-      xsells: exports.getPods
-    });
+    getMachineXSell(machine.attributes.size, xsells => cb({
+      item: machine,
+      xsells: xsells
+    }));
   });
 
 exports.getMachineByType = (type, cb) => machines.query({where: {type}})
@@ -45,5 +54,6 @@ exports.getPodsBySize = (size, cb) => pods.query({where: {size}})
   .then(cb);
 
 exports.getPodsByFlavor = (flavor, cb) => pods.query({where: {flavor}})
+  .orderBy('size')
   .fetch()
-  .then(cb);
+  .then(all => cb(getSmallestSize(all)));
