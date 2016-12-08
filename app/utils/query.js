@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 const Machines = require('../collections/machines');
 const Pods = require('../collections/pods');
 
@@ -56,4 +58,9 @@ exports.getPodsBySize = (size, cb) => Pods.query({where: {size}})
 exports.getPodsByFlavor = (flavor, cb) => Pods.query({where: {flavor}})
   .orderBy('size')
   .fetch()
-  .then(all => cb(getSmallestSize(all)));
+  .then(all => {
+    const smallest = _.groupBy(all, 'type')
+      .sort((a,b) => a.size < b.size ? -1 : 1)
+      .map(types => types[0]);
+    cb(smallest);
+  });
