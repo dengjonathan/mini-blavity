@@ -1,10 +1,11 @@
+const path = require('path');
 const app = require('express')();
 const bodyParser = require('body-parser');
 const handlers = require('./handlers');
 
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => res.send('hello world!'));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../../README.txt')));
 
 // ENDPOINTS FOR MACHINES
 app.get('/machines', handlers.getAllMachines);
