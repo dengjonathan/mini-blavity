@@ -63,7 +63,7 @@ describe('query', () => {
 
   it('should filter machines by flavor', done => {
     query.getPodsByFlavor('psl', smalls => {
-      expect(new Set(smalls.map(m => m.attributes.flavor))).to.eql(new Set(['psl']));
+      expect(new Set(smalls.map(m => m.flavor))).to.eql(new Set(['psl']));
       done();
     });
   });

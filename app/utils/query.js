@@ -56,11 +56,10 @@ exports.getPodsBySize = (size, cb) => Pods.query({where: {size}})
   .then(cb);
 
 exports.getPodsByFlavor = (flavor, cb) => Pods.query({where: {flavor}})
-  .orderBy('size')
   .fetch()
   .then(all => {
-    const smallest = _.groupBy(all, 'type')
-      .sort((a,b) => a.size < b.size ? -1 : 1)
-      .map(types => types[0]);
+    const groups = _.groupBy(all.map(model => model.attributes), 'type');
+    const ordered = _.map(groups, each => each.sort((a,b) => a.size < b.size ? -1 : 1));
+    const smallest = _.reduce(ordered, (memo, group) => memo.concat(group[0]), []);
     cb(smallest);
   });
