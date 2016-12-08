@@ -1,19 +1,19 @@
-const machines = require('../collections/machines');
-const pods = require('../collections/pods');
+const Machines = require('../collections/machines');
+const Pods = require('../collections/pods');
 
 const getSmallestSize = sorted => sorted.filter(
   (each, _, all) => each.attributes.size === all[0].attributes.size
 );
 
-const getMachineXSell = (type, cb) => pods.query({where: {type}})
+const getMachineXSell = (type, cb) => Pods.query({where: {type}})
   .orderBy('size')
   .fetch()
   .then(xsells => cb(getSmallestSize(xsells)));
 
 // MACHINES
-exports.getAllMachines = cb => machines.fetch().then(cb);
+exports.getAllMachines = cb => Machines.fetch().then(cb);
 
-exports.getMachineBySku = (sku, cb) => machines.query({where: {sku}})
+exports.getMachineBySku = (sku, cb) => Machines.query({where: {sku}})
   .fetchOne()
   .then(machine => {
     if (!machine) {
@@ -25,18 +25,18 @@ exports.getMachineBySku = (sku, cb) => machines.query({where: {sku}})
     }));
   });
 
-exports.getMachineByType = (type, cb) => machines.query({where: {type}})
+exports.getMachineByType = (type, cb) => Machines.query({where: {type}})
   .fetch()
   .then(cb);
 
-exports.getMachineBySize = (size, cb) => machines.query({where: {size}})
+exports.getMachineBySize = (size, cb) => Machines.query({where: {size}})
   .fetch()
   .then(cb);
 
 // PODS
-exports.getAllPods = cb => pods.fetch().then(cb);
+exports.getAllPods = cb => Pods.fetch().then(cb);
 
-exports.getPodBySku = (sku, cb) => pods.query({where: {sku}})
+exports.getPodBySku = (sku, cb) => Pods.query({where: {sku}})
   .fetchOne()
   .then(pod => {
     if (!pod) {
@@ -45,15 +45,15 @@ exports.getPodBySku = (sku, cb) => pods.query({where: {sku}})
     cb(pod);
   });
 
-exports.getPodsByType = (type, cb) => pods.query({where: {type}})
+exports.getPodsByType = (type, cb) => Pods.query({where: {type}})
   .fetch()
   .then(cb);
 
-exports.getPodsBySize = (size, cb) => pods.query({where: {size}})
+exports.getPodsBySize = (size, cb) => Pods.query({where: {size}})
   .fetch()
   .then(cb);
 
-exports.getPodsByFlavor = (flavor, cb) => pods.query({where: {flavor}})
+exports.getPodsByFlavor = (flavor, cb) => Pods.query({where: {flavor}})
   .orderBy('size')
   .fetch()
   .then(all => cb(getSmallestSize(all)));
