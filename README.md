@@ -32,4 +32,4 @@ To run on your local machine use the following commands:
 `npm run test` *make sure all tests pass before running server*
 `npm run start`
 
-Any questions please contact Jon @ dengjonthan [at] gmail.com
+Any questions please contact Jon @ dengjonathan [at] gmail.com
