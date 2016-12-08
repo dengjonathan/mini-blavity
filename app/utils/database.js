@@ -37,17 +37,4 @@ db.knex.schema.hasTable('pods')
     }
   });
 
-db.knex.schema.hasTable('xsells')
-  .then(exists => {
-    if (!exists) {
-      db.knex.schema.createTable('xsells', xsell => {
-        xsell.increments('id').primary();
-        xsell.integer('sku_machines');
-        xsell.integer('sku_pods');
-        xsell.timestamps();
-      })
-        .then(machines => console.log(machines));
-    }
-  });
-
 module.exports = db;
