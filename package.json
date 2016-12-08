@@ -1,14 +1,14 @@
 {
   "name": "coffee_api",
   "version": "1.0.0",
-  "description": "",
+  "description": "API to return coffee machine/ pod product inventory",
   "main": "index.js",
   "scripts": {
     "start": "node app/index.js",
     "test": "mocha test/**/*.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jon Deng",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
