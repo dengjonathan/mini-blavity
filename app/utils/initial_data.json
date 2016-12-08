@@ -6,7 +6,7 @@
     {"sku": "CM101", "type": "base", "size": "large", "compatible": "false"},
     {"sku": "CM102", "type": "premium", "size": "large", "compatible": "false"},
     {"sku": "CM103", "type": "deluxe", "size": "large", "compatible": "true"},
-    {"sku": "EM001", "type": "base", "size": "espresson", "compatible": "false"},
+    {"sku": "EM001", "type": "base", "size": "espresso", "compatible": "false"},
     {"sku": "EM002", "type": "premium", "size": "espresso", "compatible": "false"},
     {"sku": "EM003", "type": "deluxe", "size": "espresso", "compatible": "true"}
   ],
@@ -31,7 +31,7 @@
     {"sku": "CP133", "flavor": "mocha", "size": 36, "type": "large"},
     {"sku": "CP141", "flavor": "hazelnut", "size": 12, "type": "large"},
     {"sku": "CP143", "flavor": "hazelnut", "size": 36, "type": "large"},
-    {"sku": "EP001", "flavor": "vanilla", "size": 36, "type": "large"},
+    {"sku": "EP001", "flavor": "vanilla", "size": 36, "type": "espresso"},
     {"sku": "EP003", "flavor": "vanilla", "size": 60, "type": "espresso"},
     {"sku": "EP005", "flavor": "vanilla", "size": 84, "type": "espresso"},
     {"sku": "EP007", "flavor": "caramel", "size": 36, "type": "espresso"},
