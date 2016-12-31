@@ -1,11 +1,15 @@
 const SocketIO = require('socket.io');
 const server = require('./serverConfig').server;
+const cache = require('../utils/updateCache');
 
 const io = SocketIO(server);
 
 io.on('connection', socket => {
-  console.log('connected');
-  socket.emit('articleUpdate', 'hello world');
+  cache.getLatestArticle('plane-crash')
+    .then(article => socket.emit('articleUpdate', article));
 });
 
-// exports.broadcastUpdatedArticle = io
+exports.broadcastUpdatedArticle = id => {
+  cache.getLatestArticle(id)
+    .then(article => io.sockets.emit('articleUpdate', article));
+};

@@ -7,5 +7,7 @@ socket.on('connection', () => {
 });
 
 socket.on('articleUpdate', update => {
-  console.log('updated', update);
+  console.log('updated', update);  
 });
+
+export default socket;

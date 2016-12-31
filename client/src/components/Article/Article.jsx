@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import ReactHTMLParser from 'react-html-parser';
 
+import socket from '../../services/socketService';
+
 class Article extends Component {
   constructor() {
     super();
@@ -8,8 +10,13 @@ class Article extends Component {
       html: '<div>dummy text2</div>'
     };
   }
+  componentWillMount() {
+    socket.on('articleUpdate', update => {
+      this.setState({html: update.html})
+    });
+  }
   updateArticle(text) {
-    this.setState({text})
+    this.setState({text});
   }
   render() {
     return (
