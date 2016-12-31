@@ -1,13 +1,9 @@
 const path = require('path');
-const app = require('express')();
-const bodyParser = require('body-parser');
-//const handlers = require('./handlers');
+const express = require('express');
 
-app.use(bodyParser.json());
+const app = express();
+const router = require('../routes/router');
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../articles/plane-crash-1.html')));
-
-// ENDPOINTS FOR MACHINES
-app.post('/articles/:id', handlers.updateArtice);
+app.use('/', router);
 
 module.exports = app;
