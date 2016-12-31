@@ -6,7 +6,6 @@ const updateFS = require('../../utils/updateFS');
 chai.use(chaiFiles);
 const expect = chai.expect;
 const file = chaiFiles.file;
-const dir = chaiFiles.dir;
 
 describe('update article on file system', () => {
 
@@ -17,7 +16,7 @@ describe('update article on file system', () => {
   const version = 1;
   const pathToFile = `${__dirname}/../../articles/${id}-${version}.html`;
 
-  it('should save file to file system', (done) => {
+  it('should save file to file system', done => {
     updateFS.updateArticle(id, version, htmlString)
       .then(reply => {
         expect(file(pathToFile)).to.exist;
