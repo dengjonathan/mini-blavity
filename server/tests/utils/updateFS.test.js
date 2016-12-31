@@ -1,7 +1,7 @@
 const chai = require('chai');
 const chaiFiles = require('chai-files');
 
-const updateArticle = require('../../utils/updateArticle');
+const updateFS = require('../../utils/updateFS');
 
 chai.use(chaiFiles);
 const expect = chai.expect;
@@ -15,15 +15,19 @@ describe('update article on file system', () => {
     `<h1>This is a test</h1>
     <p>for testing if fs reads/writes work</p>`;
   const version = 1;
+  const pathToFile = `${__dirname}/../../articles/${id}-${version}.html`;
 
-  it('should create a new version of article', (done) => {
-    const pathToFile = `${__dirname}/../../articles/${id}-${version}.html`;
-    updateArticle.updateArticle(id, htmlString, version)
+  it('should save file to file system', (done) => {
+    updateFS.updateArticle(id, version, htmlString)
       .then(reply => {
         expect(file(pathToFile)).to.exist;
         expect(file(pathToFile)).to.equal(htmlString);
         done();
       })
       .catch(e => {console.error(e)});
+  });
+
+  afterEach(() => {
+    updateFS.deleteArticle(id, version);
   });
 });
