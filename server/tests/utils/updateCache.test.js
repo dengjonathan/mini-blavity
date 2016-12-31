@@ -13,23 +13,27 @@ describe('update article on file system', () => {
     `<h1>This is a test version 2</h1>
     <p>for if the cache can update</p>`;
 
-  it('should cache first version of an article', (done) => {
+  it('should cache first version of an article', done => {
     updateCache.updateLatestArticle(id, 1, htmlString_v1)
-      .then(result => {
-        console.log('result', result);
-        return updateCache.getLatestArticle(id);
-      })
+      .then(_ => updateCache.getLatestArticle(id))
       .then(article => {
         expect(article.version).to.equal('1');
         expect(article.html).to.equal(htmlString_v1);
         done();
       })
-      .catch(e => {
-        console.error(e)
-      });
+      .catch(e => console.error(e));
   });
 
-  afterEach(() => {
-    updateCache.deleteArticle(id);
+  it('should update cache to latest version', done => {
+    updateCache.updateLatestArticle(id, 2, htmlString_v2)
+      .then(_ => updateCache.getLatestArticle(id))
+      .then(article => {
+        expect(article.version).to.equal('2');
+        expect(article.html).to.equal(htmlString_v2);
+        done();
+      })
+      .catch(e => console.error(e));
   });
+
+  afterEach(() => updateCache.deleteArticle(id));
 });
