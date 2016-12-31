@@ -1,3 +1,4 @@
+const http = require('http');
 const path = require('path');
 const express = require('express');
 
@@ -6,4 +7,9 @@ const router = require('../routes/router');
 
 app.use('/', router);
 
-module.exports = app;
+const server = http.Server(app);
+
+module.exports = {
+  server,
+  app
+};
