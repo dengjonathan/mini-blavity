@@ -1,4 +1,4 @@
-const fibonacci = require('../../utils/fibonnaci');
+const fibonacci = require('../../utils/fibonacci');
 const expect = require('chai').expect;
 
 describe('fibonacci', () => {
