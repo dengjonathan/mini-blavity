@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import ReactHTMLParser from 'react-html-parser';
 
 import socket from '../../services/socketService';
+import './Article.css';
 
 class Article extends Component {
   constructor() {
     super();
     this.state = {
-      html: '<div>dummy text2</div>'
+      html: '<div>Loaded article will go here</div>'
     };
   }
   componentWillMount() {
@@ -21,7 +22,6 @@ class Article extends Component {
   render() {
     return (
       <div className='article'>
-        <h2>Main Article</h2>
         <div className='article-body'>{ReactHTMLParser(this.state.html)}</div>
       </div>
     );
