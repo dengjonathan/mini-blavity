@@ -7,7 +7,7 @@ describe('update article on file system', () => {
 
   const id = 'test-article';
   const htmlString_v1 =
-    `<h1>This is a test</h1>
+  `<h1>This is a test</h1>
     <p>for testing if cache reads/writes work</p>`;
   const htmlString_v2 =
     `<h1>This is a test version 2</h1>

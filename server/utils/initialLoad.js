@@ -1,6 +1,5 @@
 const updateCache = require('./updateCache').updateLatestArticle;
 const getArticle = require('./updateFS').getArticle;
-const socket = require('../config/socketConfig');
 
 const ARTICLE_ID = 'plane-crash';
 const VERSION = 1;

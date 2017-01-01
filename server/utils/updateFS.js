@@ -1,7 +1,7 @@
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
 
-exports.getArticle = (id, version) => 
+exports.getArticle = (id, version) =>
 fs.readFileAsync(`${__dirname}/../articles/${id}-${version}.html`, 'utf8');
 
 exports.updateArticle = (id, version, htmlString) => {

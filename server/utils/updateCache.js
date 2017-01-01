@@ -1,6 +1,6 @@
 const client = require('../config/redisConfig');
 
-exports.updateLatestArticle = (id, version, htmlString) => 
+exports.updateLatestArticle = (id, version, htmlString) =>
   client.hmsetAsync(id, {
     html: htmlString,
     version
