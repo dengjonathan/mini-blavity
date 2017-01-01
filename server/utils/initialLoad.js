@@ -6,6 +6,9 @@ const ARTICLE_ID = 'plane-crash';
 const VERSION = 1;
 
 // cache version 1 of article
-module.exports = () => getArticle(ARTICLE_ID, VERSION)
-    .then(article => updateCache(ARTICLE_ID, VERSION, article))
-    .then(() => socket.broadcastUpdatedArticle(ARTICLE_ID));
+module.exports = io => getArticle(ARTICLE_ID, VERSION)
+    .then(article => {
+      updateCache(ARTICLE_ID, VERSION, article);
+      return article;
+    })
+    .then(article => io.sockets.emit(article.html));

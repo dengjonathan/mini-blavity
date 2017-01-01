@@ -1,8 +1,8 @@
-const server = require('./config/serverConfig').server;
+const serverInstance = require('./config/serverConfig');
 const PORT = process.env.PORT || 8080;
 
 require('./config/socketConfig');
-require('./utils/initialLoad')();
+require('./utils/initialLoad')(serverInstance.io);
 
-server.listen(PORT);
+serverInstance.server.listen(PORT);
 console.log(`Mini Blavity Server is listening on ${PORT}`);

@@ -2,14 +2,18 @@ const http = require('http');
 const path = require('path');
 const express = require('express');
 
+const initSocket = require('./socketConfig');
+const initRouter = require('../routes/router');
+
 const app = express();
-const router = require('../routes/router');
+const server = http.Server(app);
+const io = initSocket(server);
+const router = initRouter(io);
 
 app.use('/', router);
 
-const server = http.Server(app);
-
 module.exports = {
   server,
-  app
+  app,
+  io
 };
