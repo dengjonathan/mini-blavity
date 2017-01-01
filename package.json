@@ -4,7 +4,7 @@
   "description": "server and frontend for news site",
   "main": "index.js",
   "scripts": {
-    "start": "node app/index.js",
+    "start": "node server/index.js",
     "test": "mocha server/tests/**/*.js"
   },
   "keywords": [],
