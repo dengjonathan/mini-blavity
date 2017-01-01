@@ -1,27 +1,25 @@
 {
-  "name": "coffee_api",
+  "name": "mini-blavity",
   "version": "1.0.0",
-  "description": "API to return coffee machine/ pod product inventory",
+  "description": "server and frontend for news site",
   "main": "index.js",
   "scripts": {
     "start": "node app/index.js",
-    "test": "mocha test/**/*.js"
+    "test": "mocha server/tests/**/*.js"
   },
   "keywords": [],
   "author": "Jon Deng",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.4.7",
     "body-parser": "^1.15.2",
-    "bookshelf": "^0.10.2",
     "express": "^4.14.0",
-    "knex": "^0.12.6",
-    "lodash": "^4.17.2",
-    "sqlite3": "^3.1.8"
+    "redis": "^2.6.3",
+    "socket.io": "^1.7.2"
   },
   "devDependencies": {
-    "@types/chai-http": "0.0.29",
     "chai": "^3.5.0",
-    "chai-http": "^3.0.0",
+    "chai-files": "^1.4.0",
     "mocha": "^3.2.0"
   }
 }
